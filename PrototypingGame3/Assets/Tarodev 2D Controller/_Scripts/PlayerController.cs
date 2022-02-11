@@ -22,11 +22,25 @@ namespace TarodevController {
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
+        private float _overwriteVelX;
+        private float _overwriteVelY;   
+
+
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
+
+        private GameManager _gameManager;
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
         
+        //Ben Addition
+
+        void Start()
+        {
+            _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        }
+
+
         private void Update() {
             if(!_active) return;
             // Calculate velocity
@@ -297,5 +311,27 @@ namespace TarodevController {
         }
 
         #endregion
+
+
+
+        //Ben Additions
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Danger"))
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            Destroy(gameObject);
+            _gameManager.RestartGame();
+        }
+
+        public void OverwriteVelY(float newVel)
+        {
+            _currentVerticalSpeed = newVel;
+        }
     }
 }

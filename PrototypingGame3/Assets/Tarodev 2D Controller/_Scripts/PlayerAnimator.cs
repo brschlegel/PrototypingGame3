@@ -61,7 +61,7 @@ namespace TarodevController {
             // Play landing effects and begin ground movement effects
             if (!_playerGrounded && _player.Grounded) {
                 _playerGrounded = true;
-                //_moveParticles.Play();
+                _moveParticles.Play();
                 _landParticles.transform.localScale = Vector3.one * Mathf.InverseLerp(0, _maxParticleFallSpeed, _movement.y);
                 SetColor(_landParticles);
                 _landParticles.Play();
