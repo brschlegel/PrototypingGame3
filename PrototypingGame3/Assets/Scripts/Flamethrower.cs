@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Flamethrower : MonoBehaviour
 {
-
+    [SerializeField]
+    private float endSize;
+    [SerializeField]
+    private float initialSize;
     [SerializeField]
     private float activeTime;
     [SerializeField]

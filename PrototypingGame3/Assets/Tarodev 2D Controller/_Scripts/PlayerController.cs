@@ -22,6 +22,10 @@ namespace TarodevController {
         private Vector3 _lastPosition;
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
+        private float _overwriteVelX;
+        private float _overwriteVelY;   
+
+
         // This is horrible, but for some reason colliders are not fully established when update starts...
         private bool _active;
 
@@ -325,6 +329,9 @@ namespace TarodevController {
             _gameManager.RestartGame();
         }
 
-
+        public void OverwriteVelY(float newVel)
+        {
+            _currentVerticalSpeed = newVel;
+        }
     }
 }
