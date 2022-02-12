@@ -38,6 +38,7 @@ public class Flamethrower : MonoBehaviour
             flames.SetActive(true);
             flameAnimator.SetTrigger("TurningOn");
             yield return new WaitForSeconds(activeTime);
+            flameAnimator.ResetTrigger("TurningOn");
             flameAnimator.SetTrigger("TurningOff");
             yield return new WaitForSeconds(flameAnimator.GetCurrentAnimatorStateInfo(0).length);
             flames.SetActive(false);
