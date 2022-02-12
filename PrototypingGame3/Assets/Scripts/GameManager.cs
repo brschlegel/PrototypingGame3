@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void RestartGame()
