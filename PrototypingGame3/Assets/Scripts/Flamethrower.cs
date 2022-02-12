@@ -14,10 +14,12 @@ public class Flamethrower : MonoBehaviour
     [SerializeField]
     private float idleTime;
     private GameObject flames;
+    private Animator flameAnimator;
     // Start is called before the first frame update
     void Start()
     {
         flames = transform.GetChild(0).gameObject;
+        flameAnimator = flames.GetComponent<Animator>();
         flames.SetActive(false);
         StartCoroutine(Flamethrow());
     }
@@ -34,7 +36,10 @@ public class Flamethrower : MonoBehaviour
         {
             yield return new WaitForSeconds(idleTime);
             flames.SetActive(true);
+            flameAnimator.SetTrigger("TurningOn");
             yield return new WaitForSeconds(activeTime);
+            flameAnimator.SetTrigger("TurningOff");
+            yield return new WaitForSeconds(flameAnimator.GetCurrentAnimatorStateInfo(0).length);
             flames.SetActive(false);
         }
     }
