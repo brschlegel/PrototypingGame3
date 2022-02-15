@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceableObject : MonoBehaviour
 {
     public List<Vector2> boundaries = new List<Vector2>{ new Vector2(0, 0) };
     public Vector2 size = new Vector2();
+    public Sprite objectSprite;
 
 	// Start is called before the first frame update
 	void Start()
