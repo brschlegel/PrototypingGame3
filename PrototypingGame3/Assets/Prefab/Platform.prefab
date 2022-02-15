@@ -48,6 +48,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
   size: {x: 0, y: 0}
+  objectSprite: {fileID: 21300000, guid: 9da3a25cceb71bc499bd979e0412b555, type: 3}
 --- !u!1 &5845482848043075901
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class ObjectManager : MonoBehaviour
     public PlaceableObject currentObject;
 
     public Color highlightColor;
+
+    public Image nextImage;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +34,9 @@ public class ObjectManager : MonoBehaviour
 
         //The current object is the first one
         currentObject = objects.Peek();
+
+        //Next object image
+        nextImage.sprite = objects.ElementAt(1).objectSprite;
     }
 
     //Add a new placeable object to queue
@@ -43,5 +50,8 @@ public class ObjectManager : MonoBehaviour
 
         //Change the current object
         currentObject = objects.Peek();
+
+        //Next object image
+        nextImage.sprite = objects.ElementAt(1).objectSprite;
     }
 }
