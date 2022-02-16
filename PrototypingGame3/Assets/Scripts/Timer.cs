@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public Text timeText;
-    private float timeElapsed;
+    public float timeElapsed;
+
+    private bool timerEnabled = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,23 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeElapsed += Time.deltaTime;
+        if (timerEnabled)
+        {
+            timeElapsed += Time.deltaTime;
+            TimeSpan time = TimeSpan.FromSeconds(timeElapsed);
+            timeText.text = time.ToString("mm':'ss");
+        }
+        
+    }
+
+    public string ReturnTime()
+    {
         TimeSpan time = TimeSpan.FromSeconds(timeElapsed);
-        timeText.text = time.ToString("mm':'ss");
+        return time.ToString("mm':'ss");
+    }
+
+    public void StopTimer()
+    {
+        timerEnabled = false;
     }
 }
