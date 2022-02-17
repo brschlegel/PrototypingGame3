@@ -42,6 +42,9 @@ TagManager:
   - name: Background
     uniqueID: 1415208975
     locked: 0
+  - name: Iron Bar
+    uniqueID: 1074585495
+    locked: 0
   - name: Background Objects
     uniqueID: 4003211201
     locked: 0
