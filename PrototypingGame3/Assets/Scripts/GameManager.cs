@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public Canvas winCanvas;
     public Timer timer;
-    public PlayerController player;
+    
     public Text timeText;
 
     // Start is called before the first frame update
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     {
         
         timer.StopTimer();
-        player.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePosition;
+        
         timeText.text = timer.ReturnTime();
         winCanvas.gameObject.SetActive(true);
     }
