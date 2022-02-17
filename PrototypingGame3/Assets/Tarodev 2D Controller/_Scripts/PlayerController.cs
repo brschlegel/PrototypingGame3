@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using System.Collections;
 
 namespace TarodevController {
     /// <summary>
@@ -30,6 +31,11 @@ namespace TarodevController {
         private bool _active;
 
         private GameManager _gameManager;
+
+        //Camera shake
+        private Shaker shaker;
+        public float shakeDuration;
+
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
         
@@ -38,6 +44,7 @@ namespace TarodevController {
         void Start()
         {
             _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            shaker = Camera.main.GetComponent<Shaker>();
         }
 
 
@@ -319,12 +326,17 @@ namespace TarodevController {
         {
             if (collision.gameObject.CompareTag("Danger"))
             {
-                Die();
+                StartCoroutine(Die());
             }
         }
 
-        private void Die()
+        private IEnumerator Die()
         {
+            gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            //Debug.Log("About to shake");
+            StartCoroutine(shaker.DoShake(shakeDuration));
+            yield return new WaitForSeconds(shakeDuration);
+            Debug.Log("Destroyed");
             Destroy(gameObject);
             _gameManager.RestartGame();
         }

@@ -26,6 +26,9 @@ public class Tile : MonoBehaviour
     private void OnMouseEnter()
     {
         //Debug.Log("Mouse entered Tile: " + gameObject.name);
+        if (grid == null)
+            return;
+
         grid.ShowObjectBounds(this.gameObject);
     }
 
