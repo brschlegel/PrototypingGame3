@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1145736215}
   timer: {fileID: 2086206499}
-  player: {fileID: 831481245}
+  player: {fileID: 0}
   timeText: {fileID: 242345749}
 --- !u!4 &119139174
 Transform:
@@ -2406,7 +2406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130.9913, y: -91.621}
+  m_AnchoredPosition: {x: 130.9913, y: -79}
   m_SizeDelta: {x: 241.9826, y: 195.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602498989
@@ -5481,17 +5481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565267705}
   m_CullTransparentMesh: 1
---- !u!114 &1591824540 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7773255384973782816, guid: b4b2ea5fdc2bf104182bd33ff127aabe, type: 3}
-  m_PrefabInstance: {fileID: 1092616219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbfb23717f7dee14688bccda60b77b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1668435588
 GameObject:
   m_ObjectHideFlags: 0
