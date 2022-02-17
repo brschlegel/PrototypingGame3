@@ -71,7 +71,7 @@ public class GridSystem : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             PlaceObject(coordinates);
-        }
+        }      
     }
 
     //Find out what tile you are on and the current placeable object's bounds
