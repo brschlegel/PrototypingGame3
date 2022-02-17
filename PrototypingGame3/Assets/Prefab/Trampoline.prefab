@@ -47,6 +47,7 @@ MonoBehaviour:
   boundaries:
   - {x: 0, y: 0}
   size: {x: 0, y: 0}
+  objectSprite: {fileID: 21300000, guid: f0a51e67ad42d7d498d3784cd9ba5686, type: 3}
 --- !u!1001 &925614604193334661
 PrefabInstance:
   m_ObjectHideFlags: 0
