@@ -24,7 +24,11 @@ namespace TarodevController {
         private float _currentHorizontalSpeed, _currentVerticalSpeed;
 
         private float _overwriteVelX;
-        private float _overwriteVelY;   
+        private float _overwriteVelY;
+
+        public AudioSource source;
+        public AudioClip jumpSound;
+        public AudioClip deathSound; // oof
 
 
         // This is horrible, but for some reason colliders are not fully established when update starts...
@@ -256,6 +260,7 @@ namespace TarodevController {
                 _coyoteUsable = false;
                 _timeLeftGrounded = float.MinValue;
                 JumpingThisFrame = true;
+                source.PlayOneShot(jumpSound, .1f);
             }
             else {
                 JumpingThisFrame = false;
@@ -324,7 +329,7 @@ namespace TarodevController {
         //Ben Additions
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Danger"))
+            if (collision.gameObject.CompareTag("Danger") && gameObject.transform.GetChild(0).gameObject.activeSelf)
             {
                 StartCoroutine(Die());
             }
@@ -334,6 +339,7 @@ namespace TarodevController {
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             //Debug.Log("About to shake");
+            source.PlayOneShot(deathSound);
             StartCoroutine(shaker.DoShake(shakeDuration));
             yield return new WaitForSeconds(shakeDuration);
             Debug.Log("Destroyed");

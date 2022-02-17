@@ -9,6 +9,9 @@ public class Trampoline : MonoBehaviour
     private float vel;
 
     private Animator animator;
+
+    public AudioSource source;
+    public AudioClip bounceSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class Trampoline : MonoBehaviour
         {
             controller.OverwriteVelY(vel);
             animator.SetTrigger("Bounce");
+
+            source.PlayOneShot(bounceSound, .5f);
         }
     }
 
