@@ -22748,7 +22748,7 @@ GameObject:
   - component: {fileID: 874039327}
   - component: {fileID: 874039326}
   m_Layer: 5
-  m_Name: Hold Slot
+  m_Name: Current Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27422,6 +27422,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1551883158}
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
+      propertyPath: currentImage
+      value: 
+      objectReference: {fileID: 1117948199}
+    - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: objectTypes.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -28189,8 +28193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.2, y: 43.344795}
-  m_SizeDelta: {x: 33.69, y: 16.5104}
+  m_AnchoredPosition: {x: 5.7, y: 43.344795}
+  m_SizeDelta: {x: 53.2769, y: 16.5104}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1638983177
 MonoBehaviour:
@@ -28225,7 +28229,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hold
+  m_Text: Current
 --- !u!222 &1638983178
 CanvasRenderer:
   m_ObjectHideFlags: 0
