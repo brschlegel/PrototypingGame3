@@ -10,12 +10,19 @@ public class ObjectManager : MonoBehaviour
     public List<PlaceableObject> objectTypes;
     public int objectAmount = 4;
 
+    public bool holdActive = false;
+
     public PlaceableObject currentObject;
+    public PlaceableObject holdObject;
+    public PlaceableObject swappedObject;
 
     public Color highlightColor;
 
     public Image nextImage;
     public Image currentImage;
+    public Image holdImage;
+
+    public Sprite blankSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +50,32 @@ public class ObjectManager : MonoBehaviour
         nextImage.sprite = objects.ElementAt(1).objectSprite;
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (holdActive)
+            {
+                swappedObject = holdObject;
+                holdObject = currentObject;
+                currentObject = swappedObject;
+
+                holdImage.sprite = holdObject.objectSprite;
+                currentImage.sprite = currentObject.objectSprite;
+            }
+            else
+            {
+                holdObject = currentObject;
+                holdActive = true;
+                AddNewObject();
+            }
+            
+        }
+
+        
+        
+    }
+
     //Add a new placeable object to queue
     public void AddNewObject()
     {
@@ -60,5 +93,16 @@ public class ObjectManager : MonoBehaviour
 
         //Next object image
         nextImage.sprite = objects.ElementAt(1).objectSprite;
+
+        //Hold object image
+        if (holdActive)
+        {
+            holdImage.sprite = holdObject.objectSprite;
+        }
+        else
+        {
+            holdImage.sprite = blankSprite;
+        }
+
     }
 }
