@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 {
     public Canvas winCanvas;
     public Timer timer;
-    
     public Text timeText;
 
     // Start is called before the first frame update
@@ -42,9 +41,17 @@ public class GameManager : MonoBehaviour
     {
         
         timer.StopTimer();
-        
+        if(ScoreManager.RecordScore(timer.timeElapsed, SceneManager.GetActiveScene().buildIndex - 1))
+        {
+            //If we are here u have a new highscore
+            Debug.Log("HighScore");
+        }
         timeText.text = timer.ReturnTime();
         winCanvas.gameObject.SetActive(true);
     }
 
+    private void OnApplicationQuit()
+    {
+        ScoreManager.WriteScores();
+    }
 }
