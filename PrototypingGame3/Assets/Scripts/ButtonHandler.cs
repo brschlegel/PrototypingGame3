@@ -19,4 +19,9 @@ public class ButtonHandler : MonoBehaviour
     {
         SceneManager.LoadScene("Level 3");
     }
+
+    public void LoadHighScoreLevel()
+    {
+        SceneManager.LoadScene("HighScores");
+    }
 }
