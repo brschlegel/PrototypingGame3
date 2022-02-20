@@ -40,6 +40,10 @@ namespace TarodevController {
         private Shaker shaker;
         public float shakeDuration;
 
+        //Death Particles
+        private GameObject deathParticles;
+        public ParticleManager pm;
+
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
         
@@ -49,6 +53,9 @@ namespace TarodevController {
         {
             _gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
             shaker = Camera.main.GetComponent<Shaker>();
+            deathParticles = GameObject.Find("DeathParticles");
+            Debug.Log("Death Particles: " + deathParticles);
+            deathParticles.SetActive(false);
         }
 
 
@@ -331,6 +338,24 @@ namespace TarodevController {
         {
             if (collision.gameObject.CompareTag("Danger") && gameObject.transform.GetChild(0).gameObject.activeSelf)
             {
+                //Rotation angle is based on the velocity of the player
+                float rotationAngle = Mathf.Atan2(Velocity.y, Velocity.x);//Mathf.Atan2(dir.y, dir.x);
+
+                //If it is acid change the color to the acid green -- not a permanent fix but oh well
+                if(collision.gameObject.name == "Hazard")
+                {
+                    deathParticles.GetComponent<ParticleSystem>().startColor = new Color(0, 240, 0);
+                }
+
+                //Set it to active so that it will play
+                deathParticles.SetActive(true);
+
+                //Change the rotation of the death particles based on what direction the player got hit from (the opposite direction)
+                deathParticles.transform.Rotate(new Vector3(0, 0, (Mathf.Rad2Deg * rotationAngle + 90)), Space.Self);
+
+                //Call the particle manager so that it can actually play while the player gets destroyed
+                pm.PlayParticles(deathParticles.GetComponent<ParticleSystem>(), transform.position);
+
                 StartCoroutine(Die());
             }
         }
@@ -340,6 +365,9 @@ namespace TarodevController {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             //Debug.Log("About to shake");
             source.PlayOneShot(deathSound);
+
+            
+
             StartCoroutine(shaker.DoShake(shakeDuration));
             yield return new WaitForSeconds(shakeDuration);
             Debug.Log("Destroyed");
