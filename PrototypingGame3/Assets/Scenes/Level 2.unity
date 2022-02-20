@@ -28297,11 +28297,11 @@ PrefabInstance:
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: holdImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 572171401}
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: nextImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1125872990}
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: blankSprite
       value: 
@@ -28309,7 +28309,7 @@ PrefabInstance:
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: currentImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1582399538}
     - target: {fileID: 6710210559632451677, guid: 71bb1d8732dc3ec489a92900883e38ef, type: 3}
       propertyPath: objectTypes.Array.size
       value: 3

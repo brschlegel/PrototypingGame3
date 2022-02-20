@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TarodevController;
 using UnityEngine.UI;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,10 +13,10 @@ public class GameManager : MonoBehaviour
     public Text timeText;
     public Text highScore;
 
-    // Start is called before the first frame update
+    // Start is called before the fisrst frame update
     void Start()
     {
-        highScore.text = (ScoreManager.GetHighScore(SceneManager.GetActiveScene().buildIndex - 1)).ToString();
+        highScore.text = string.Format("{0:0.00}", (ScoreManager.GetHighScore(SceneManager.GetActiveScene().buildIndex - 1)).ToString());
     }
 
     // Update is called once per frame
