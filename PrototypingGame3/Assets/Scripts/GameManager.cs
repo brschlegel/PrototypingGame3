@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     public Canvas winCanvas;
     public Timer timer;
     public Text timeText;
+    public Text highScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore.text = (ScoreManager.GetHighScore(SceneManager.GetActiveScene().buildIndex - 1)).ToString();
     }
 
     // Update is called once per frame
