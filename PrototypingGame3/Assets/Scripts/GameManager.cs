@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour
 {
     public Canvas winCanvas;
     public Timer timer;
-    
     public Text timeText;
+    public Text highScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore.text = (ScoreManager.GetHighScore(SceneManager.GetActiveScene().buildIndex - 1)).ToString();
     }
 
     // Update is called once per frame
@@ -42,9 +42,17 @@ public class GameManager : MonoBehaviour
     {
         
         timer.StopTimer();
-        
+        if(ScoreManager.RecordScore(timer.timeElapsed, SceneManager.GetActiveScene().buildIndex - 1))
+        {
+            //If we are here u have a new highscore
+            Debug.Log("HighScore");
+        }
         timeText.text = timer.ReturnTime();
         winCanvas.gameObject.SetActive(true);
     }
 
+    private void OnApplicationQuit()
+    {
+        ScoreManager.WriteScores();
+    }
 }
