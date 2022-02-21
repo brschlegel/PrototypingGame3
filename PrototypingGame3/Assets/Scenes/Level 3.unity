@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1017092193}
   timer: {fileID: 437166760}
-  timeText: {fileID: 2051870006}
+  timeText: {fileID: 1543614148}
   highScore: {fileID: 789300884}
 --- !u!4 &599006692
 Transform:
